@@ -1,37 +1,58 @@
-<p align="center">
-  <a href="https://amplify.aws/community">
-    <img alt="Amplify" src="https://github.com/aws-amplify/community/blob/master/src/assets/images/logo-dark.png" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Amplify Community
-</h1>
+# Amplify Learn
 
-[![DiscordChat](https://img.shields.io/discord/308323056592486420?logo=discord")](https://discord.gg/jWVbPfC)
+This is the repo for https://amplify.aws/learn, which is a site containing courses on AWS Amplify created by the Developer Advocacy team working on the product.
 
-Welcome to the Amplify Community - a hub for developers building fullstack serverless applications with Amplify to easily access content (such as events, blog posts, videos, sample projects, and tutorials) created by other members of the Amplify community.
+The site is hosted on [Amplify Hosting](https://docs.aws.amazon.com/amplify/latest/userguide/welcome.html) and built using these technologies:
 
+- [Amplify Studio](https://docs.amplify.aws/console/)
+- [Amplify UI](https://ui.docs.amplify.aws/)
+- [Next.js](https://nextjs.org/)
 
-## Participate
+## Prerequisites
 
-### Become a contributor
+- Node.js 14.x or later
+- Amplify CLI
+  - Install it by running this command in terminal: `npm install -g @aws-amplify/cli`
+- An AWS Account
 
-You can become a contributor by:
+## Getting Started
 
-1. [Submitting a post](https://github.com/aws-amplify/community/blob/master/content/posts/README.md)
-2. [Hosting an Amplify meetup](https://github.com/aws-amplify/community/blob/master/content/events/README.md)
-3. [Speaking at a conference](https://github.com/aws-amplify/community/blob/master/content/events/README.md)
+1. Fork the repo: https://github.com/aws-amplify/learn/fork and clone it.
+2. In your terminal, navigate to the _root_ of your local clone.
+3. Run `npm install`
+4. Run `amplify init`
+   - This will initialize an Amplify app within your local directory.
+   - Follow the steps in the terminal to set up your project.
+   - After completing these steps, Amplify CLI will set up the cloud resources needed for the Learn repo.
+5. If you want to push up these changes to AWS, run `amplify push`
+   - This will create AWS resources on your account required by the Learn app. More details in the [Amplify Backend Environment](#amplify-backend-environment) section.
+6. Run `npm run dev`
+7. Navigate to `localhost:3000/learn` to view the site in your dev environment.
 
-### Chat
+## Amplify Backend Environment
 
-* Have a feature request? Or getting stuck somewhere? Open an issue:
-  * [Amplify JS](https://github.com/aws-amplify/amplify-js/issues)
-  * [Amplify CLI](https://github.com/aws-amplify/amplify-cli/issues)
-  * [Amplify Console](https://forums.aws.amazon.com/forum.jspa?forumID=314)  
-  * [AWS SDK for iOS](https://github.com/aws-amplify/aws-sdk-ios/issues)
-  * [AWS SDK for Android](https://github.com/aws-amplify/aws-sdk-android/issues)
-* You can join the real-time conversation on our [Amplify Discord Server](https://discord.gg/jWVbPfC)
+The Learn app uses Amplify to create a backend environment consisting of these services:
 
-### Ideas for improving the community?
+- AWS AppSync
+- AWS DynamoDB
 
-We are always looking at ways to improve. If you have ideas for the community site, open a [GitHub issue](https://github.com/aws-amplify/community/issues) for your feature request.
+When you run the terminal command `amplify push` and follow the prompts, Amplify CLI pushes the configurations from the Learn app to create these resources using AWS CloudFormation.
+
+### Modifying data for the Learn app
+
+The Learn app uses the [CMS from Amplify Studio](https://docs.amplify.aws/console/data/content-management/) to manage data for the app. To set this up, follow these steps:
+
+1. First, make sure the backend environment has been pushed up to the cloud.
+2. Run `amplify console` in terminal and choose `AWS console` as your option.
+   - This should open the AWS Amplify Console in your browser.
+3. In the left navigation menu, click on "Amplify Studio settings".
+4. Enable Amplify Studio by toggling it on.
+5. Once it's done setting up, go back to your terminal and run `amplify console`.
+6. Choose `Amplify Studio` and now a browser window should open up for Amplify Studio
+7. Now you can use Amplify Studio to modify the data models and create content.
+
+## Learn More
+
+To learn more about AWS Amplify, take a look at the following resources:
+
+- [AWS Amplify Documentation](https://docs.amplify.aws/) - learn about Amplify features such as CLI and the different libraries.
